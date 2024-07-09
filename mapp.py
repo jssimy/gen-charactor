@@ -15,22 +15,22 @@ cls_thr =0.2
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-seg_weights = 'c:/make-charactor/u2net.pth'
-cls_weights = 'c:/make-charactor/cn_best.pth'
+seg_weights = './u2net.pth'
+cls_weights = './cn_best.pth'
 
-breed_sheet = 'c:/make-charactor/class_sheet.yaml'
-charactor_dir = 'c:/make-charactor/char_data/'
-results_dir = 'c:/make-charactor/results/'
+breed_sheet = './class_sheet.yaml'
+charactor_dir = './char_data/'
+results_dir = './results/'
 
 trargs = SN()
 trargs.pretrained = True
 trargs.requires_grad = False
 trargs.training = False
-trargs.encoder_weights = 'c:/make-charactor/pama-check/encoder.pth'
-trargs.decoder_weights = 'c:/make-charactor/pama-check/decoder.pth'
-trargs.align1_weights = 'c:/make-charactor/pama-check/PAMA1.pth'
-trargs.align2_weights = 'c:/make-charactor/pama-check/PAMA2.pth'
-trargs.align3_weights = 'c:/make-charactor/pama-check/PAMA3.pth'
+trargs.encoder_weights = './pama-check/encoder.pth'
+trargs.decoder_weights = './pama-check/decoder.pth'
+trargs.align1_weights = './pama-check/PAMA1.pth'
+trargs.align2_weights = './pama-check/PAMA2.pth'
+trargs.align3_weights = './pama-check/PAMA3.pth'
 
 seg_input_size = 320
 segpre1 = transforms.Compose([
@@ -56,7 +56,7 @@ trspret = transforms.Resize(trs_input_size)
 
 
 # UI layout
-st.set_page_config(page_title="Pet Breed Classification")
+st.set_page_config(page_title="Charactor grnerating")
 st.markdown(
         body=helper.UI.css,
         unsafe_allow_html=True,
@@ -65,7 +65,7 @@ st.markdown(
 st.sidebar.markdown(helper.UI.about_block, unsafe_allow_html=True)
 
 # Title
-st.header("Pet Breed Classification")
+st.header("Charactor grnerating")
 
 # File uploader
 upload_cell, preview_cell = st.columns([12, 1])
